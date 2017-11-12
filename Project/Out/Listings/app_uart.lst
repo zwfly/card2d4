@@ -1,4 +1,4 @@
-C51 COMPILER V9.56.0.0   APP_UART                                                          11/11/2017 19:30:51 PAGE 1   
+C51 COMPILER V9.56.0.0   APP_UART                                                          11/12/2017 12:09:06 PAGE 1   
 
 
 C51 COMPILER V9.56.0.0, COMPILATION OF MODULE APP_UART
@@ -62,7 +62,7 @@ line level    source
   51   3                              if (((rcv_T.rxBuf[rcv_T.pRead]) == 0x55)
   52   3                                              && ((rcv_T.rxBuf[(rcv_T.pRead + 1) % RCV_BUFSIZE]) == 0xAA)) {
   53   4                                      len = rcv_T.rxBuf[(rcv_T.pRead + 2) % RCV_BUFSIZE];
-C51 COMPILER V9.56.0.0   APP_UART                                                          11/11/2017 19:30:51 PAGE 2   
+C51 COMPILER V9.56.0.0   APP_UART                                                          11/12/2017 12:09:06 PAGE 2   
 
   54   4                                      if ((rcv_T.pWrite + RCV_BUFSIZE - rcv_T.pRead) % RCV_BUFSIZE
   55   4                                                      >= (len + 4)) {
@@ -126,7 +126,7 @@ line level    source
  113   8                                                                      sendBuf[index] += sendBuf[i + 1];
  114   8                                                              }
  115   7                                                              index++;
-C51 COMPILER V9.56.0.0   APP_UART                                                          11/11/2017 19:30:51 PAGE 3   
+C51 COMPILER V9.56.0.0   APP_UART                                                          11/12/2017 12:09:06 PAGE 3   
 
  116   7                                                              app_2d4_send(sendBuf, index);
  117   7                                                              break;
@@ -190,7 +190,7 @@ line level    source
  175   7                                                              index++;
  176   7                                                              if (g_tWork.status.bits.DOME == 0) {
  177   8                                                                      app_2d4_send(sendBuf, index);
-C51 COMPILER V9.56.0.0   APP_UART                                                          11/11/2017 19:30:51 PAGE 4   
+C51 COMPILER V9.56.0.0   APP_UART                                                          11/12/2017 12:09:06 PAGE 4   
 
  178   8                                                              }
  179   7                                                              break;
@@ -254,7 +254,7 @@ line level    source
  237   7                                                      case APP_BRIGHT_CMD:
  238   7                                                              dome_running_param.bright = rcv_T.rxBuf[(rcv_T.pRead
  239   7                                                                              + 4) % RCV_BUFSIZE];
-C51 COMPILER V9.56.0.0   APP_UART                                                          11/11/2017 19:30:51 PAGE 5   
+C51 COMPILER V9.56.0.0   APP_UART                                                          11/12/2017 12:09:06 PAGE 5   
 
  240   7                                                              Light_bright_set(
  241   7                                                                              rcv_T.rxBuf[(rcv_T.pRead + 4) % RCV_BUFSIZE]);

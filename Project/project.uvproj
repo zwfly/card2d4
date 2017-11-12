@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>meter</TargetName>
+      <TargetName>card</TargetName>
       <ToolsetNumber>0x0</ToolsetNumber>
       <ToolsetName>MCS-51</ToolsetName>
       <TargetOption>
@@ -369,11 +369,6 @@
               <FilePath>..\App\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>app_work.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\App\src\app_work.c</FilePath>
-            </File>
-            <File>
               <FileName>app_repeat_exe.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\src\app_repeat_exe.c</FilePath>
@@ -389,24 +384,19 @@
               <FilePath>..\App\src\app_2d4.c</FilePath>
             </File>
             <File>
-              <FileName>app_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\App\src\app_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>app_crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\src\app_crc.c</FilePath>
             </File>
             <File>
-              <FileName>app_dome.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\App\src\app_dome.c</FilePath>
-            </File>
-            <File>
               <FileName>app_eeprom.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\src\app_eeprom.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\src\app_key.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -419,11 +409,6 @@
               <FilePath>..\Bsp\bsp.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\src\bsp_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_timer0.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\src\bsp_timer0.c</FilePath>
@@ -434,19 +419,14 @@
               <FilePath>..\Bsp\src\bsp_2d4.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_light.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\src\bsp_light.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_relay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\src\bsp_relay.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_eeprom.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\src\bsp_eeprom.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\src\bsp_key.c</FilePath>
             </File>
           </Files>
         </Group>

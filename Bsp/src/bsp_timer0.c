@@ -6,7 +6,7 @@
  */
 
 #include "bsp.h"
-#include "app_dome.h"
+#include "string.h"
 
 #define TH0_INIT        1340
 #define TL0_INIT        1340
@@ -19,6 +19,7 @@ static void timer0_ParamInit(void);
 void Timer0_InitHard(void) {
 
 	timer0_ParamInit();
+
 	TIMER0_MODE1_ENABLE
 	;
 
@@ -37,13 +38,7 @@ void Timer0_InitHard(void) {
 
 static void timer0_ParamInit(void) {
 
-	Task_time.cnt_10ms = 0;
-	Task_time.cnt_100ms = 0;
-	Task_time.cnt_1s = 0;
-
-	Task_time.flag_10ms = 0;
-	Task_time.flag_100ms = 0;
-	Task_time.flag_1s = 0;
+	memset((uint8_t*)&Task_time, 0, sizeof(_Task_time));
 
 }
 
