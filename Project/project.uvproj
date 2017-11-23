@@ -148,7 +148,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>10</TargetSelection>
+          <TargetSelection>9</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -427,6 +427,11 @@
               <FileName>bsp_key.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\src\bsp_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\src\bsp_led.c</FilePath>
             </File>
           </Files>
         </Group>

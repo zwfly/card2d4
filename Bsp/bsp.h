@@ -14,6 +14,7 @@
 #include "bsp_timer1.h"
 #include "bsp_eeprom.h"
 #include "bsp_key.h"
+#include "bsp_led.h"
 
 #ifndef TRUE
 #define TRUE  1

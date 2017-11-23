@@ -9,6 +9,7 @@
 ".\Out\Objects\bsp_2d4.obj",
 ".\Out\Objects\bsp_eeprom.obj",
 ".\Out\Objects\bsp_key.obj",
+".\Out\Objects\bsp_led.obj",
 ".\Out\Objects\Common.obj",
 ".\Out\Objects\Delay.obj",
 ".\Out\Objects\Version.obj",

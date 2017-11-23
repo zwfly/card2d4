@@ -1,11 +1,11 @@
-C51 COMPILER V9.56.0.0   MAIN                                                              11/12/2017 23:51:34 PAGE 1   
+C51 COMPILER V9.52.0.0   MAIN                                                              11/22/2017 10:42:57 PAGE 1   
 
 
-C51 COMPILER V9.56.0.0, COMPILATION OF MODULE MAIN
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN .\Out\Objects\main.obj
 COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\App\src\main.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Common\inc;..
-                    -\App\inc;..\Bsp\inc;..\Startup;..\Bsp) DEFINE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\Out\Listings\main.lst) OBJECT(.\Ou
-                    -t\Objects\main.obj)
+                    -\App\inc;..\Bsp\inc;..\Startup;..\Bsp) DEFINE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\Out\Listings\main.lst) TABS(2) OBJ
+                    -ECT(.\Out\Objects\main.obj)
 
 line level    source
 
@@ -14,61 +14,135 @@ line level    source
    3          static uint8_t dome_cnt = 0;
    4          
    5          void main(void) {
-   6   1      
-   7   1              /****************/
-   8   1              bsp_Init();
-   9   1      
-  10   1              /****************/
-  11   1              app_eeprom_Init();
-  12   1              app_2d4_init();
-  13   1      //      app_work_Init();
-  14   1      //      app_uart_Init();
-  15   1      //      app_dome_Init();
-  16   1              /****************/
-  17   1      //      Show_FW_Version_Number_To_PC();
-  18   1              while (1) {
-  19   2      
-  20   2      //              Relay_toggle();
-  21   2                      if (Task_time.flag_1ms) {
-  22   3                              Task_time.flag_1ms = 0;
-  23   3                              //////////////////
-  24   3      
-  25   3      
-  26   3                      }
-  27   2      
-  28   2                      if (Task_time.flag_10ms) {
-  29   3                              Task_time.flag_10ms = 0;
-  30   3                              //////////////////
-  31   3      
-  32   3                      }
-  33   2                      if (Task_time.flag_100ms) {
-  34   3                              Task_time.flag_100ms = 0;
-  35   3                              //////////////////
-  36   3                              app_2d4_pro();
-  37   3      
-  38   3      //                      Repeat_Pro();
-  39   3      
-  40   3                      }
-  41   2                      if (Task_time.flag_500ms) {
-  42   3                              Task_time.flag_500ms = 0;
-  43   3                              //////////////////
-  44   3      
-  45   3                      }
-  46   2                      if (Task_time.flag_1s) {
-  47   3                              Task_time.flag_1s = 0;
-  48   3                              //////////////////
-  49   3      
-  50   3                      }
-  51   2              }
-  52   1      }
+   6   1        uint8_t PD_cnt = 0;
+   7   1        uint8_t ucKeyCode;
+   8   1        /****************/
+   9   1        bsp_Init();
+  10   1      
+  11   1        /****************/
+  12   1        app_eeprom_Init();
+  13   1        app_2d4_init();
+  14   1      //  app_work_Init();
+  15   1      //  app_uart_Init();
+  16   1      //  app_dome_Init();
+  17   1      #if 0
+                Enable_INT_Port1
+              
+              //  Enable_BIT2_FallEdge_Trig
+              //  ;
+              //  Enable_BIT3_FallEdge_Trig
+              //  ;
+                Enable_BIT4_FallEdge_Trig
+                ;
+                Enable_BIT5_FallEdge_Trig
+                ;
+                Enable_BIT6_FallEdge_Trig
+                ;
+                Enable_BIT7_FallEdge_Trig
+                ;
+              
+                set_EPI;// Enable pin interrupt
+              //  set_EX1;
+              #endif
+  36   1        set_EA;
+  37   1      
+  38   1        /****************/
+  39   1      //  Show_FW_Version_Number_To_PC();
+  40   1        while (1) {
+  41   2      
+  42   2          if (Task_time.flag_1ms) {
+  43   3            Task_time.flag_1ms = 0;
+  44   3            //////////////////
+  45   3      
+  46   3          }
+  47   2      
+  48   2          if (Task_time.flag_10ms) {
+  49   3            Task_time.flag_10ms = 0;
+  50   3            //////////////////
+  51   3            bsp_KeyScan();
+  52   3          }
+  53   2          if (Task_time.flag_100ms) {
+C51 COMPILER V9.52.0.0   MAIN                                                              11/22/2017 10:42:57 PAGE 2   
 
-C51 COMPILER V9.56.0.0   MAIN                                                              11/12/2017 23:51:34 PAGE 2   
+  54   3            Task_time.flag_100ms = 0;
+  55   3            //////////////////
+  56   3            app_2d4_pro();
+  57   3      
+  58   3            Repeat_Pro();
+  59   3      
+  60   3          }
+  61   2          if (Task_time.flag_500ms) {
+  62   3            Task_time.flag_500ms = 0;
+  63   3            //////////////////
+  64   3      
+  65   3          }
+  66   2          if (Task_time.flag_1s) {
+  67   3            Task_time.flag_1s = 0;
+  68   3            //////////////////
+  69   3      #if 1
+  70   3            PD_cnt++;
+  71   3            if (PD_cnt >= 5) {
+  72   4              PD_cnt = 0;
+  73   4      
+  74   4              P02 = 0;
+  75   4              P03 = 0;
+  76   4              P04 = 0;
+  77   4              P05 = 0;
+  78   4              P06 = 0;
+  79   4              P07 = 0;
+  80   4      
+  81   4              P14 = 1;
+  82   4              P15 = 1;
+  83   4              P16 = 1;
+  84   4              P17 = 1;
+  85   4      
+  86   4              Enable_INT_Port1
+  87   4      
+  88   4              //  Enable_BIT2_FallEdge_Trig
+  89   4              //  ;
+  90   4              //  Enable_BIT3_FallEdge_Trig
+  91   4              //  ;
+  92   4              Enable_BIT4_FallEdge_Trig
+  93   4              ;
+  94   4              Enable_BIT5_FallEdge_Trig
+  95   4              ;
+  96   4              Enable_BIT6_FallEdge_Trig
+  97   4              ;
+  98   4              Enable_BIT7_FallEdge_Trig
+  99   4              ;
+ 100   4      
+ 101   4              set_EPI;        // Enable pin interrupt
+ 102   4      
+ 103   4              set_PD;
+ 104   4      
+ 105   4              SW_Reset();  //¸´Î»
+*** WARNING C206 IN LINE 105 OF ..\App\src\main.c: 'SW_Reset': missing function-prototype
+ 106   4      //        clr_EPI;
+ 107   4      //        PINEN = 0;
+ 108   4      //        PIPEN = 0;
+ 109   4      //        PICON = 0x00;
+ 110   4      
+ 111   4              continue;
+ 112   4            }
+ 113   3      #endif
+ 114   3          }
+C51 COMPILER V9.52.0.0   MAIN                                                              11/22/2017 10:42:57 PAGE 3   
+
+ 115   2      #if 1
+ 116   2          ucKeyCode = bsp_GetKey();
+ 117   2          if (ucKeyCode != KEY_NONE) {
+ 118   3            PD_cnt = 0;
+ 119   3            app_key_pro(ucKeyCode);
+ 120   3          }
+ 121   2      #endif
+ 122   2        }
+ 123   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     54    ----
+   CODE SIZE        =    177    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      1    ----
+   XDATA SIZE       =      1       2
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
@@ -76,4 +150,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

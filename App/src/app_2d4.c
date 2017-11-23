@@ -26,12 +26,12 @@ void app_2d4_init(void) {
 	memset(sendBuf, 0, sizeof(sendBuf));
 
 	RF_Init();
-#if 1
+#if 0
 
 	RF_RxMode();
 #else
 	RF_TxMode();
-	sendRcv_flag = 1;
+//	sendRcv_flag = 1;
 #endif
 
 //	RF_Carrier(1);
@@ -39,33 +39,22 @@ void app_2d4_init(void) {
 }
 
 void app_2d4_send(uint8_t *d, uint8_t len) {
-//	if (len > PAYLOAD_WIDTH) {
-//		return;
-//	}
 	uint8_t i = 0;
-	for (i = 0; i < 10; i++) {
-		nop
-//		nop
-//		nop
-//		nop
+	if (len > PAYLOAD_WIDTH) {
+		return;
 	}
-	RF_TxMode();
+
+//	RF_TxMode();
 	sendRcv_flag = 1;
 
-	for (i = 0; i < 10; i++) {
-		nop
-//		nop
-//		nop
-//		nop
-	}
-
 	if (sendBuf != d) {
-		memset(sendBuf, 0, PAYLOAD_WIDTH);
+		memset(sendBuf, 0, sizeof(sendBuf));
 		memcpy(sendBuf, d, len);
 	}
 }
 
-static void app_2d4_Rcv(uint8_t *buf) {}
+static void app_2d4_Rcv(uint8_t *buf) {
+}
 
 void app_2d4_pro(void) {
 
@@ -77,12 +66,8 @@ void app_2d4_pro(void) {
 			RF_ClearFIFO();
 			RF_ClearStatus();
 
-//			printf("Send OK\r\n");
-
 			sendRcv_flag = 0;
 //			RF_RxMode();
-
-//			Relay_toggle();
 
 			break;
 		case RX_DR_FLAG:		//发送成功且收到payload
@@ -103,9 +88,9 @@ void app_2d4_pro(void) {
 		}
 
 	} else {
-		if (ucRF_DumpRxData(rcvBuf, sizeof(rcvBuf))) {
+//		if (ucRF_DumpRxData(rcvBuf, sizeof(rcvBuf))) {
 //			app_2d4_Rcv(rcvBuf);
-		}
+//		}
 	}
 }
 

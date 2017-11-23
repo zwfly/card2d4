@@ -100,7 +100,8 @@
         <tRSysVw>1</tRSysVw>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>10</nTsel>
+        <bEvRecOn>1</bEvRecOn>
+        <nTsel>9</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -129,55 +130,20 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>81</LineNumber>
+          <LineNumber>53</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>-16767387</Address>
+          <Address>-16768226</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>E:\mywork\myProject\lifuxiao\LCD2.4\project\card2d4\Project\Bsp\src\BSP_LIGHT.C</Filename>
+          <Filename>E:\mywork\myProject\lifuxiao\LCD2.4\project\card2d4\Project\App\src\MAIN.C</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\project\BSP_LIGHT\81</Expression>
+          <Expression>\\project\MAIN\53</Expression>
         </Bp>
       </Breakpoint>
-      <WatchWindow1>
-        <Ww>
-          <count>0</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>dome_running_param,0x10</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>tmp</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>r</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>g</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>b</ItemText>
-        </Ww>
-      </WatchWindow1>
-      <MemoryWindow1>
-        <Mm>
-          <WinNumber>1</WinNumber>
-          <SubType>0</SubType>
-          <ItemText>PWM5H</ItemText>
-          <AccSizeX>0</AccSizeX>
-        </Mm>
-      </MemoryWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -210,9 +176,12 @@
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
       <bLintAuto>0</bLintAuto>
-      <Lin2Executable></Lin2Executable>
-      <Lin2ConfigFile></Lin2ConfigFile>
-      <bLin2Auto>0</bLin2Auto>
+      <bAutoGenD>0</bAutoGenD>
+      <LntExFlags>0</LntExFlags>
+      <pMisraName></pMisraName>
+      <pszMrule></pszMrule>
+      <pSingCmds></pSingCmds>
+      <pMultCmds></pMultCmds>
     </TargetOption>
   </Target>
 
@@ -374,6 +343,18 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>13</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Bsp\src\bsp_led.c</PathWithFileName>
+      <FilenameWithoutPath>bsp_led.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -384,7 +365,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>13</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -396,7 +377,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>14</FileNumber>
+      <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -408,7 +389,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>15</FileNumber>
+      <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -428,7 +409,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>16</FileNumber>
+      <FileNumber>17</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -448,7 +429,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>17</FileNumber>
+      <FileNumber>18</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

@@ -40,19 +40,21 @@ static void bsp_DetectKey(uint8_t i);
 static uint8_t IsKeyDown(uint8_t line, uint8_t column) {
 	uint8_t ret = 0;
 
+	P02 = 1;
+	P03 = 1;
+	P04 = 1;
+	P05 = 1;
+	P06 = 1;
+	P07 = 1;
+
+	P14 = 1;
+	P15 = 1;
+	P16 = 1;
+	P17 = 1;
+
 	switch (line) {
 	case 0:
 		P02 = 0;
-		P03 = 1;
-		P04 = 1;
-		P05 = 1;
-		P06 = 1;
-		P07 = 1;
-
-		P14 = 1;
-		P15 = 1;
-		P16 = 1;
-		P17 = 1;
 		switch (column) {
 		case 0:
 			ret = ~P17;
@@ -71,17 +73,7 @@ static uint8_t IsKeyDown(uint8_t line, uint8_t column) {
 		}
 		break;
 	case 1:
-		P02 = 1;
 		P03 = 0;
-		P04 = 1;
-		P05 = 1;
-		P06 = 1;
-		P07 = 1;
-
-		P14 = 1;
-		P15 = 1;
-		P16 = 1;
-		P17 = 1;
 		switch (column) {
 		case 0:
 			ret = ~P17;
@@ -100,17 +92,7 @@ static uint8_t IsKeyDown(uint8_t line, uint8_t column) {
 		}
 		break;
 	case 2:
-		P02 = 1;
-		P03 = 1;
 		P04 = 0;
-		P05 = 1;
-		P06 = 1;
-		P07 = 1;
-
-		P14 = 1;
-		P15 = 1;
-		P16 = 1;
-		P17 = 1;
 		switch (column) {
 		case 0:
 			ret = ~P17;
@@ -129,17 +111,7 @@ static uint8_t IsKeyDown(uint8_t line, uint8_t column) {
 		}
 		break;
 	case 3:
-		P02 = 1;
-		P03 = 1;
-		P04 = 1;
 		P05 = 0;
-		P06 = 1;
-		P07 = 1;
-
-		P14 = 1;
-		P15 = 1;
-		P16 = 1;
-		P17 = 1;
 		switch (column) {
 		case 0:
 			ret = ~P17;
@@ -158,17 +130,26 @@ static uint8_t IsKeyDown(uint8_t line, uint8_t column) {
 		}
 		break;
 	case 4:
-		P02 = 1;
-		P03 = 1;
-		P04 = 1;
-		P05 = 1;
 		P06 = 0;
-		P07 = 1;
-
-		P14 = 1;
-		P15 = 1;
-		P16 = 1;
-		P17 = 1;
+		switch (column) {
+		case 0:
+			ret = ~P17;
+			break;
+		case 1:
+			ret = ~P16;
+			break;
+		case 2:
+			ret = ~P15;
+			break;
+		case 3:
+			ret = ~P14;
+			break;
+		default:
+			break;
+		}
+		break;
+	case 5:
+		P07 = 0;
 		switch (column) {
 		case 0:
 			ret = ~P17;
@@ -188,7 +169,7 @@ static uint8_t IsKeyDown(uint8_t line, uint8_t column) {
 		break;
 	}
 
-	return 0;
+	return ret;
 }
 
 static uint8_t IsKeyDown1(void) {
@@ -196,7 +177,6 @@ static uint8_t IsKeyDown1(void) {
 }
 
 static uint8_t IsKeyDown2(void) {
-
 	return IsKeyDown(0, 1);
 }
 
@@ -459,9 +439,20 @@ static void bsp_InitKeyVar(void) {
 		s_tBtn[i].RepeatCount = 0; /* 连发计数器 */
 	}
 
-//	s_tBtn[3].RepeatSpeed = 50; /* 按键连发的速度，0表示不支持连发 */
-//	s_tBtn[4].RepeatSpeed = 50; /* 按键连发的速度，0表示不支持连发 */
+	s_tBtn[1].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+	s_tBtn[3].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
 
+	s_tBtn[6].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+	s_tBtn[14].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+
+	s_tBtn[9].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+	s_tBtn[11].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+
+	s_tBtn[13].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+	s_tBtn[17].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+
+	s_tBtn[15].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
+	s_tBtn[19].RepeatSpeed = 40; /* 按键连发的速度，0表示不支持连发 */
 	/* 判断按键按下的函数 */
 	i = 0;
 	s_tBtn[i++].IsKeyDownFunc = IsKeyDown1;

@@ -11,10 +11,14 @@
 #define LCD2LAMP_HEADER   0xF2
 #define LAMP2LCD_HEADER   0xF8
 
-#define  KEY_MODE_POWER_CMD         0x50
-#define  KEY_PREV_VOL_MINUS_CMD     0x51
-#define  KEY_PLAY_BT_CALL_CMD       0x52
-#define  KEY_NEXT_VOL_ADD_CMD       0x53
+#define  KEY_MODE_POWER_CMD           0x50
+#define  KEY_MODE_POWER_LONG_CMD      0x70
+#define  KEY_PREV_VOL_MINUS_CMD       0x51
+#define  KEY_PREV_VOL_MINUS_LONG_CMD  0x71
+#define  KEY_PLAY_BT_CALL_CMD         0x52
+#define  KEY_PLAY_BT_CALL_LONG_CMD    0x72
+#define  KEY_NEXT_VOL_ADD_CMD         0x53
+#define  KEY_NEXT_VOL_ADD_LONG_CMD    0x73
 
 #define  KEY_POWER_CMD              0x54
 #define  KEY_MODE_ADD_CMD           0x55
