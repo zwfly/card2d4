@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 1   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BSP_KEY
@@ -62,7 +62,7 @@ line level    source
   51   1        P15 = 1;
   52   1        P16 = 1;
   53   1        P17 = 1;
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 2   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 2   
 
   54   1      
   55   1        switch (line) {
@@ -126,7 +126,7 @@ line level    source
  113   2        case 3:
  114   2          P05 = 0;
  115   2          switch (column) {
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 3   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 3   
 
  116   3          case 0:
  117   3            ret = ~P17;
@@ -190,7 +190,7 @@ line level    source
  175          static uint8_t IsKeyDown1(void) {
  176   1        return IsKeyDown(0, 0);
  177   1      }
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 4   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 4   
 
  178          
  179          static uint8_t IsKeyDown2(void) {
@@ -254,7 +254,7 @@ line level    source
  237   1        return IsKeyDown(4, 1);
  238   1      }
  239          static uint8_t IsKeyDown19(void) {
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 5   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 5   
 
  240   1        return IsKeyDown(4, 2);
  241   1      }
@@ -318,7 +318,7 @@ line level    source
  299   2        } else {
  300   2          ret = s_tKey.Buf[s_tKey.Read];
  301   2      
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 6   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 6   
 
  302   2          if (++s_tKey.Read >= KEY_FIFO_SIZE) {
  303   3            s_tKey.Read = 0;
@@ -382,7 +382,7 @@ line level    source
  361           *********************************************************************************************************
  362           *  函 数 名: bsp_ClearKey
  363           *  功能说明: 清空按键FIFO缓冲区
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 7   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 7   
 
  364           *  形    参：无
  365           *  返 回 值: 按键代码
@@ -446,7 +446,7 @@ line level    source
  423   1        memset((uint8_t *) &s_tBtn, 0, sizeof(s_tBtn));
  424   1      
  425   1        /* 对按键FIFO读写指针清零 */
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 8   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 8   
 
  426   1        s_tKey.Read = 0;
  427   1        s_tKey.Write = 0;
@@ -510,7 +510,7 @@ line level    source
  485          /*
  486           *********************************************************************************************************
  487           *  函 数 名: bsp_DetectKey
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 9   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 9   
 
  488           *  功能说明: 检测一个按键。非阻塞状态，必须被周期性的调用。
  489           *  形    参:  按键结构变量指针
@@ -574,7 +574,7 @@ line level    source
  547           *  函 数 名: bsp_KeyScan
  548           *  功能说明: 扫描所有按键。非阻塞，被systick中断周期性的调用
  549           *  形    参:  无
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           11/22/2017 10:42:58 PAGE 10  
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/14/2017 16:07:41 PAGE 10  
 
  550           *  返 回 值: 无
  551           *********************************************************************************************************

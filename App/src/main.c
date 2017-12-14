@@ -1,12 +1,90 @@
 #include "app.h"
 
-static uint8_t dome_cnt = 0;
+//static uint8_t dome_cnt = 0;
 
+static void into_powerDown(void) {
+
+	set_P0M1_0;
+	clr_P0M2_0;
+	
+	set_P1M1_0;
+	clr_P1M2_0;
+	
+	set_P1M1_1;
+	clr_P1M2_1;
+	
+	P00=0;
+	P10=0;
+	P11=0;
+	
+	
+	set_P1M1_2;
+	P1M2 &=~SET_BIT2;
+	
+	P12 = 1;
+
+	P02 = 0;
+	P03 = 0;
+	P04 = 0;
+	P05 = 0;
+	P06 = 0;
+	P07 = 0;
+
+	P14 = 1;
+	P15 = 1;
+	P16 = 1;
+	P17 = 1;
+
+	Enable_INT_Port1
+
+	//	Enable_BIT2_FallEdge_Trig
+	//	;
+	//	Enable_BIT3_FallEdge_Trig
+	//	;
+	Enable_BIT4_FallEdge_Trig
+	;
+	Enable_BIT5_FallEdge_Trig
+	;
+	Enable_BIT6_FallEdge_Trig
+	;
+	Enable_BIT7_FallEdge_Trig
+	;
+
+	set_EPI;				// Enable pin interrupt
+
+	set_PD;
+
+	SW_Reset();  //¸´Î»
+
+//				clr_EPI;
+//				PINEN = 0;
+//				PIPEN = 0;
+//				PICON = 0x00;
+
+//	P12 = 0;
+}
+
+static void pd_init(void) {
+	clr_P1M1_2;
+//	set_P1M2_2;
+	P1M2 |= SET_BIT2;
+
+	P12 = 0;
+
+}
+uint16_t i=0;
 void main(void) {
 	uint8_t PD_cnt = 0;
 	uint8_t ucKeyCode;
 	/****************/
+		pd_init();
+	for(i=0;i<150;i++){
+		nop;
+	}
+	
+	
 	bsp_Init();
+
 
 	/****************/
 	app_eeprom_Init();
@@ -49,11 +127,12 @@ void main(void) {
 			Task_time.flag_10ms = 0;
 			//////////////////
 			bsp_KeyScan();
+
+			app_2d4_pro();
 		}
 		if (Task_time.flag_100ms) {
 			Task_time.flag_100ms = 0;
 			//////////////////
-			app_2d4_pro();
 
 			Repeat_Pro();
 
@@ -68,47 +147,9 @@ void main(void) {
 			//////////////////
 #if 1
 			PD_cnt++;
-			if (PD_cnt >= 5) {
+			if (PD_cnt >= 3) {
 				PD_cnt = 0;
-
-				P02 = 0;
-				P03 = 0;
-				P04 = 0;
-				P05 = 0;
-				P06 = 0;
-				P07 = 0;
-
-				P14 = 1;
-				P15 = 1;
-				P16 = 1;
-				P17 = 1;
-
-				Enable_INT_Port1
-
-				//	Enable_BIT2_FallEdge_Trig
-				//	;
-				//	Enable_BIT3_FallEdge_Trig
-				//	;
-				Enable_BIT4_FallEdge_Trig
-				;
-				Enable_BIT5_FallEdge_Trig
-				;
-				Enable_BIT6_FallEdge_Trig
-				;
-				Enable_BIT7_FallEdge_Trig
-				;
-
-				set_EPI;				// Enable pin interrupt
-
-				set_PD;
-
-				SW_Reset();  //¸´Î»
-//				clr_EPI;
-//				PINEN = 0;
-//				PIPEN = 0;
-//				PICON = 0x00;
-
-				continue;
+				into_powerDown();
 			}
 #endif
 		}
@@ -117,6 +158,8 @@ void main(void) {
 		if (ucKeyCode != KEY_NONE) {
 			PD_cnt = 0;
 			app_key_pro(ucKeyCode);
+
+//			into_powerDown();
 		}
 #endif
 	}

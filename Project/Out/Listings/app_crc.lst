@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   APP_CRC                                                           11/22/2017 10:42:58 PAGE 1   
+C51 COMPILER V9.52.0.0   APP_CRC                                                           12/14/2017 16:07:40 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE APP_CRC
@@ -62,7 +62,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA SIZE       =      2       9
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V9.52.0.0   APP_CRC                                                           11/22/2017 10:42:58 PAGE 2   
+C51 COMPILER V9.52.0.0   APP_CRC                                                           12/14/2017 16:07:40 PAGE 2   
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

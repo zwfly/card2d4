@@ -39,11 +39,14 @@ void app_2d4_init(void) {
 }
 
 void app_2d4_send(uint8_t *d, uint8_t len) {
+	idata uint8_t	buffer[PAYLOAD_WIDTH] = {0};
+
 	uint8_t i = 0;
 	if (len > PAYLOAD_WIDTH) {
 		return;
 	}
 
+#if 1
 //	RF_TxMode();
 	sendRcv_flag = 1;
 
@@ -51,9 +54,16 @@ void app_2d4_send(uint8_t *d, uint8_t len) {
 		memset(sendBuf, 0, sizeof(sendBuf));
 		memcpy(sendBuf, d, len);
 	}
-}
 
-static void app_2d4_Rcv(uint8_t *buf) {
+#else
+	sendRcv_flag = 1;
+
+	memset(buffer, 0, sizeof(buffer));
+	memcpy(buffer, d, len);
+	RF_TxData(buffer, sizeof(buffer));
+
+	sendRcv_flag = 0;
+#endif
 }
 
 void app_2d4_pro(void) {

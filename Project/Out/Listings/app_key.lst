@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   APP_KEY                                                           11/22/2017 10:42:58 PAGE 1   
+C51 COMPILER V9.52.0.0   APP_KEY                                                           12/14/2017 16:07:40 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE APP_KEY
@@ -62,7 +62,7 @@ line level    source
               #endif
   52   1      
   53   1        index = 0;
-C51 COMPILER V9.52.0.0   APP_KEY                                                           11/22/2017 10:42:58 PAGE 2   
+C51 COMPILER V9.52.0.0   APP_KEY                                                           12/14/2017 16:07:40 PAGE 2   
 
   54   1        memset(sendBuf, 0, PAYLOAD_WIDTH);
   55   1        switch (keyCode) {
@@ -126,7 +126,7 @@ line level    source
  113   2          break;
  114   2        case KEY_DOWN_K5:
  115   2          break;
-C51 COMPILER V9.52.0.0   APP_KEY                                                           11/22/2017 10:42:58 PAGE 3   
+C51 COMPILER V9.52.0.0   APP_KEY                                                           12/14/2017 16:07:40 PAGE 3   
 
  116   2        case KEY_LONG_K5:
  117   2          break;
@@ -190,7 +190,7 @@ line level    source
  175   2        case KEY_LONG_K14:
  176   2          break;
  177   2        case KEY_UP_K15:   // MODE-
-C51 COMPILER V9.52.0.0   APP_KEY                                                           11/22/2017 10:42:58 PAGE 4   
+C51 COMPILER V9.52.0.0   APP_KEY                                                           12/14/2017 16:07:40 PAGE 4   
 
  178   2          break;
  179   2        case KEY_DOWN_K15:
@@ -254,7 +254,7 @@ line level    source
  237   2          break;
  238   2        case KEY_UP_K24:   // num 4
  239   2          app_send_key(KEY_NUM_4_CMD, &index);
-C51 COMPILER V9.52.0.0   APP_KEY                                                           11/22/2017 10:42:58 PAGE 5   
+C51 COMPILER V9.52.0.0   APP_KEY                                                           12/14/2017 16:07:40 PAGE 5   
 
  240   2          break;
  241   2        case KEY_DOWN_K24:
