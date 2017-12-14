@@ -1,11 +1,11 @@
-C51 COMPILER V9.52.0.0   APP_2D4                                                           12/14/2017 16:07:40 PAGE 1   
+C51 COMPILER V9.56.0.0   APP_2D4                                                           12/14/2017 21:21:40 PAGE 1   
 
 
-C51 COMPILER V9.52.0.0, COMPILATION OF MODULE APP_2D4
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE APP_2D4
 OBJECT MODULE PLACED IN .\Out\Objects\app_2d4.obj
 COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\App\src\app_2d4.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Common\inc
-                    -;..\App\inc;..\Bsp\inc;..\Startup;..\Bsp) DEFINE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\Out\Listings\app_2d4.lst) TABS(
-                    -2) OBJECT(.\Out\Objects\app_2d4.obj)
+                    -;..\App\inc;..\Bsp\inc;..\Startup;..\Bsp) DEFINE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\Out\Listings\app_2d4.lst) OBJEC
+                    -T(.\Out\Objects\app_2d4.obj)
 
 line level    source
 
@@ -32,101 +32,101 @@ line level    source
   21          
   22          void app_2d4_init(void) {
   23   1      
-  24   1        sendRcv_flag = 0;
-  25   1        memset(rcvBuf, 0, sizeof(rcvBuf));
-  26   1        memset(sendBuf, 0, sizeof(sendBuf));
+  24   1              sendRcv_flag = 0;
+  25   1              memset(rcvBuf, 0, sizeof(rcvBuf));
+  26   1              memset(sendBuf, 0, sizeof(sendBuf));
   27   1      
-  28   1        RF_Init();
+  28   1              RF_Init();
   29   1      #if 0
               
-                RF_RxMode();
+                      RF_RxMode();
               #else
-  33   1        RF_TxMode();
-  34   1      //  sendRcv_flag = 1;
+  33   1              RF_TxMode();
+  34   1      //      sendRcv_flag = 1;
   35   1      #endif
   36   1      
-  37   1      //  RF_Carrier(1);
+  37   1      //      RF_Carrier(1);
   38   1      
   39   1      }
   40          
   41          void app_2d4_send(uint8_t *d, uint8_t len) {
-  42   1        idata uint8_t buffer[PAYLOAD_WIDTH] = {0};
+  42   1      //      idata uint8_t   buffer[PAYLOAD_WIDTH] = {0};
   43   1      
-  44   1        uint8_t i = 0;
-  45   1        if (len > PAYLOAD_WIDTH) {
-  46   2          return;
-  47   2        }
+  44   1              uint8_t i = 0;
+  45   1              if (len > PAYLOAD_WIDTH) {
+  46   2                      return;
+  47   2              }
   48   1      
   49   1      #if 1
-  50   1      //  RF_TxMode();
-  51   1        sendRcv_flag = 1;
+  50   1      //      RF_TxMode();
+  51   1              sendRcv_flag = 1;
   52   1      
-  53   1        if (sendBuf != d) {
-C51 COMPILER V9.52.0.0   APP_2D4                                                           12/14/2017 16:07:40 PAGE 2   
+  53   1              if (sendBuf != d) {
+C51 COMPILER V9.56.0.0   APP_2D4                                                           12/14/2017 21:21:40 PAGE 2   
 
-  54   2          memset(sendBuf, 0, sizeof(sendBuf));
-  55   2          memcpy(sendBuf, d, len);
-  56   2        }
+  54   2                      memset(sendBuf, 0, sizeof(sendBuf));
+  55   2                      memcpy(sendBuf, d, len);
+  56   2              }
   57   1      
   58   1      #else
-                sendRcv_flag = 1;
+                      sendRcv_flag = 1;
               
-                memset(buffer, 0, sizeof(buffer));
-                memcpy(buffer, d, len);
-                RF_TxData(buffer, sizeof(buffer));
+                      memset(buffer, 0, sizeof(buffer));
+                      memcpy(buffer, d, len);
+                      RF_TxData(buffer, sizeof(buffer));
               
-                sendRcv_flag = 0;
+                      sendRcv_flag = 0;
               #endif
   67   1      }
   68          
   69          void app_2d4_pro(void) {
   70   1      
-  71   1        if (sendRcv_flag) {
+  71   1              if (sendRcv_flag) {
   72   2      
-  73   2          switch (ucRF_GetStatus()) {
-  74   3          case TX_DS_FLAG:    // 普通型发送完成 或 增强型发送成功
+  73   2                      switch (ucRF_GetStatus()) {
+  74   3                      case TX_DS_FLAG:                // 普通型发送完成 或 增强型发送成功
   75   3      
-  76   3            RF_ClearFIFO();
-  77   3            RF_ClearStatus();
+  76   3                              RF_ClearFIFO();
+  77   3                              RF_ClearStatus();
   78   3      
-  79   3            sendRcv_flag = 0;
-  80   3      //      RF_RxMode();
+  79   3                              sendRcv_flag = 0;
+  80   3      //                      RF_RxMode();
   81   3      
-  82   3            break;
-  83   3          case RX_DR_FLAG:    //发送成功且收到payload
+  82   3                              break;
+  83   3                      case RX_DR_FLAG:                //发送成功且收到payload
   84   3      
-  85   3            RF_ClearFIFO();
-  86   3            RF_ClearStatus();
-  87   3            break;
-  88   3          case MAX_RT_FLAG:   // 增强型发送超时失败
+  85   3                              RF_ClearFIFO();
+  86   3                              RF_ClearStatus();
+  87   3                              break;
+  88   3                      case MAX_RT_FLAG:               // 增强型发送超时失败
   89   3      
-  90   3            RF_ClearFIFO();
-  91   3            RF_ClearStatus();
-  92   3            break;
-  93   3          default:    // rf 处于空闲状态才发送数据
+  90   3                              RF_ClearFIFO();
+  91   3                              RF_ClearStatus();
+  92   3                              break;
+  93   3                      default:                // rf 处于空闲状态才发送数据
   94   3      
-  95   3            RF_TxData(sendBuf, sizeof(sendBuf));
+  95   3                              RF_TxData(sendBuf, sizeof(sendBuf));
   96   3      
-  97   3            break;
-  98   3          }
+  97   3                              break;
+  98   3                      }
   99   2      
- 100   2        } else {
- 101   2      //    if (ucRF_DumpRxData(rcvBuf, sizeof(rcvBuf))) {
- 102   2      //      app_2d4_Rcv(rcvBuf);
- 103   2      //    }
- 104   2        }
+ 100   2              } else {
+ 101   2      //              if (ucRF_DumpRxData(rcvBuf, sizeof(rcvBuf))) {
+ 102   2      //                      app_2d4_Rcv(rcvBuf);
+ 103   2      //              }
+ 104   2              }
  105   1      }
  106          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    216    ----
-   CONSTANT SIZE    =     16    ----
+   CODE SIZE        =    192    ----
+   CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     41       5
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-   IDATA SIZE       =   ----      16
-C51 COMPILER V9.52.0.0   APP_2D4                                                           12/14/2017 16:07:40 PAGE 3   
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.56.0.0   APP_2D4                                                           12/14/2017 21:21:40 PAGE 3   
 
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

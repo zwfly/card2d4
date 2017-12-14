@@ -2,26 +2,31 @@
 
 //static uint8_t dome_cnt = 0;
 
+static uint8_t wireless_init_flag = 0;
+
 static void into_powerDown(void) {
+	uint16_t i = 0;
+
+	set_P1M1_2;
+	P1M2 &= ~SET_BIT2;
+	P12 = 1;
+	for (i = 0; i < 200; i++) {
+		nop
+	}
 
 	set_P0M1_0;
 	clr_P0M2_0;
-	
+	P00 = 0;
+
 	set_P1M1_0;
 	clr_P1M2_0;
-	
+	P10 = 0;
+
+#if 1
 	set_P1M1_1;
 	clr_P1M2_1;
-	
-	P00=0;
-	P10=0;
-	P11=0;
-	
-	
-	set_P1M1_2;
-	P1M2 &=~SET_BIT2;
-	
-	P12 = 1;
+	P11 = 0;  //CSN
+#endif
 
 	P02 = 0;
 	P03 = 0;
@@ -72,23 +77,23 @@ static void pd_init(void) {
 	P12 = 0;
 
 }
-uint16_t i=0;
+uint16_t i = 0;
 void main(void) {
 	uint8_t PD_cnt = 0;
 	uint8_t ucKeyCode;
+	wireless_init_flag = 0;
 	/****************/
-		pd_init();
-	for(i=0;i<150;i++){
-		nop;
+	pd_init();
+	for (i = 0; i < 500; i++) {
+		nop
+		nop
 	}
-	
-	
-	bsp_Init();
 
+	bsp_Init();
 
 	/****************/
 	app_eeprom_Init();
-	app_2d4_init();
+//	app_2d4_init();
 //	app_work_Init();
 //	app_uart_Init();
 //	app_dome_Init();
@@ -126,9 +131,10 @@ void main(void) {
 		if (Task_time.flag_10ms) {
 			Task_time.flag_10ms = 0;
 			//////////////////
+			app_2d4_pro();
+
 			bsp_KeyScan();
 
-			app_2d4_pro();
 		}
 		if (Task_time.flag_100ms) {
 			Task_time.flag_100ms = 0;
@@ -157,6 +163,10 @@ void main(void) {
 		ucKeyCode = bsp_GetKey();
 		if (ucKeyCode != KEY_NONE) {
 			PD_cnt = 0;
+			if (wireless_init_flag == 0) {
+				wireless_init_flag = 1;
+				app_2d4_init();
+			}
 			app_key_pro(ucKeyCode);
 
 //			into_powerDown();
