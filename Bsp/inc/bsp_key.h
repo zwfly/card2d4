@@ -12,7 +12,7 @@
 #ifndef __BSP_KEY_H
 #define __BSP_KEY_H
 
-#define KEY_COUNT    24
+#define KEY_COUNT    25
 
 /* 根据应用程序的功能重命名按键宏 */
 #define KEY_DOWN_K1		KEY_1_DOWN
@@ -111,6 +111,10 @@
 #define KEY_UP_K24		KEY_24_UP
 #define KEY_LONG_K24	KEY_24_LONG
 
+#define KEY_DOWN_K21_24	 KEY_21_24_DOWN
+#define KEY_UP_K21_24	 KEY_21_24_UP
+#define KEY_LONG_K21_24	 KEY_21_24_LONG
+
 /* 按键ID, 主要用于bsp_KeyState()函数的入口参数 */
 typedef enum {
 	KID_K1 = 0,
@@ -137,6 +141,7 @@ typedef enum {
 	KID_K22,
 	KID_K23,
 	KID_K24,
+	KID_K21_24,
 } KEY_ID_E;
 
 /*
@@ -268,6 +273,9 @@ typedef enum {
 	KEY_24_UP, /* 9键弹起 */
 	KEY_24_LONG, /* 9键长按 */
 
+	KEY_21_24_DOWN,
+	KEY_21_24_UP,
+	KEY_21_24_LONG,
 } KEY_ENUM;
 
 /* 按键FIFO用到变量 */

@@ -151,9 +151,11 @@ void main(void) {
 		if (Task_time.flag_1s) {
 			Task_time.flag_1s = 0;
 			//////////////////
+
+			app_work_1s_pro();
 #if 1
 			PD_cnt++;
-			if (PD_cnt >= 3) {
+			if (PD_cnt >= (g_tWork.match_code_mode ? 45 : 3)) {
 				PD_cnt = 0;
 				into_powerDown();
 			}
@@ -165,7 +167,9 @@ void main(void) {
 			PD_cnt = 0;
 			if (wireless_init_flag == 0) {
 				wireless_init_flag = 1;
-				app_2d4_init();
+
+				g_tWork.match_code_mode = 0;
+				app_2d4_switch_saved_address();
 			}
 			app_key_pro(ucKeyCode);
 

@@ -254,6 +254,14 @@ static uint8_t IsKeyDown23(void) {
 static uint8_t IsKeyDown24(void) {
 	return IsKeyDown(5, 3);
 }
+
+static uint8_t IsKeyDown21_and_24(void) {
+	if (IsKeyDown(5, 0) && IsKeyDown(5, 3)) {
+		return 1;
+	}
+	return 0;
+}
+
 /*
  *********************************************************************************************************
  *	º¯ Êý Ãû: bsp_InitKey
@@ -479,7 +487,7 @@ static void bsp_InitKeyVar(void) {
 	s_tBtn[i++].IsKeyDownFunc = IsKeyDown22;
 	s_tBtn[i++].IsKeyDownFunc = IsKeyDown23;
 	s_tBtn[i++].IsKeyDownFunc = IsKeyDown24;
-
+	s_tBtn[i++].IsKeyDownFunc = IsKeyDown21_and_24;
 }
 
 /*

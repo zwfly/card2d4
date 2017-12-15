@@ -1,4 +1,4 @@
-C51 COMPILER V9.56.0.0   APP_KEY                                                           12/14/2017 21:21:41 PAGE 1   
+C51 COMPILER V9.56.0.0   APP_KEY                                                           12/16/2017 00:34:40 PAGE 1   
 
 
 C51 COMPILER V9.56.0.0, COMPILATION OF MODULE APP_KEY
@@ -62,7 +62,7 @@ line level    source
               #endif
   52   1      
   53   1              index = 0;
-C51 COMPILER V9.56.0.0   APP_KEY                                                           12/14/2017 21:21:41 PAGE 2   
+C51 COMPILER V9.56.0.0   APP_KEY                                                           12/16/2017 00:34:40 PAGE 2   
 
   54   1              memset(sendBuf, 0, PAYLOAD_WIDTH);
   55   1              switch (keyCode) {
@@ -126,7 +126,7 @@ line level    source
  113   2                      break;
  114   2              case KEY_DOWN_K5:
  115   2                      break;
-C51 COMPILER V9.56.0.0   APP_KEY                                                           12/14/2017 21:21:41 PAGE 3   
+C51 COMPILER V9.56.0.0   APP_KEY                                                           12/16/2017 00:34:40 PAGE 3   
 
  116   2              case KEY_LONG_K5:
  117   2                      break;
@@ -190,7 +190,7 @@ line level    source
  175   2              case KEY_LONG_K14:
  176   2                      break;
  177   2              case KEY_UP_K15:   // MODE-
-C51 COMPILER V9.56.0.0   APP_KEY                                                           12/14/2017 21:21:41 PAGE 4   
+C51 COMPILER V9.56.0.0   APP_KEY                                                           12/16/2017 00:34:40 PAGE 4   
 
  178   2                      break;
  179   2              case KEY_DOWN_K15:
@@ -232,49 +232,61 @@ line level    source
  215   2              case KEY_LONG_K20:
  216   2                      break;
  217   2              case KEY_UP_K21:   // num 1
- 218   2                      break;
- 219   2              case KEY_DOWN_K21:
- 220   2                      app_send_key(KEY_NUM_1_CMD, &index);
- 221   2                      break;
- 222   2              case KEY_LONG_K21:
- 223   2                      break;
- 224   2              case KEY_UP_K22:   // num 2
- 225   2                      app_send_key(KEY_NUM_2_CMD, &index);
- 226   2                      break;
- 227   2              case KEY_DOWN_K22:
- 228   2                      break;
- 229   2              case KEY_LONG_K22:
+ 218   2                      if (press_long_lock == 0) {
+ 219   3                              app_send_key(KEY_NUM_1_CMD, &index);
+ 220   3                      }
+ 221   2                      press_long_lock = 0;
+ 222   2                      break;
+ 223   2              case KEY_DOWN_K21:
+ 224   2                      break;
+ 225   2              case KEY_LONG_K21:
+ 226   2                      press_long_lock = 1;
+ 227   2                      break;
+ 228   2              case KEY_UP_K22:   // num 2
+ 229   2                      app_send_key(KEY_NUM_2_CMD, &index);
  230   2                      break;
- 231   2              case KEY_UP_K23:   // num 3
- 232   2                      app_send_key(KEY_NUM_3_CMD, &index);
- 233   2                      break;
- 234   2              case KEY_DOWN_K23:
- 235   2                      break;
- 236   2              case KEY_LONG_K23:
+ 231   2              case KEY_DOWN_K22:
+ 232   2                      break;
+ 233   2              case KEY_LONG_K22:
+ 234   2                      break;
+ 235   2              case KEY_UP_K23:   // num 3
+ 236   2                      app_send_key(KEY_NUM_3_CMD, &index);
  237   2                      break;
- 238   2              case KEY_UP_K24:   // num 4
- 239   2                      app_send_key(KEY_NUM_4_CMD, &index);
-C51 COMPILER V9.56.0.0   APP_KEY                                                           12/14/2017 21:21:41 PAGE 5   
+ 238   2              case KEY_DOWN_K23:
+ 239   2                      break;
+C51 COMPILER V9.56.0.0   APP_KEY                                                           12/16/2017 00:34:40 PAGE 5   
 
- 240   2                      break;
- 241   2              case KEY_DOWN_K24:
- 242   2                      break;
- 243   2              case KEY_LONG_K24:
+ 240   2              case KEY_LONG_K23:
+ 241   2                      break;
+ 242   2              case KEY_UP_K24:   // num 4
+ 243   2                      app_send_key(KEY_NUM_4_CMD, &index);
  244   2                      break;
- 245   2              default:
+ 245   2              case KEY_DOWN_K24:
  246   2                      break;
- 247   2              }
- 248   1              if (index) {
- 249   2                      index++;
- 250   2                      app_2d4_send(sendBuf, index);
- 251   2              }
- 252   1      
- 253   1      }
- 254          
+ 247   2              case KEY_LONG_K24:
+ 248   2                      break;
+ 249   2              case KEY_UP_K21_24:   // num 1 and 4
+ 250   2                      break;
+ 251   2              case KEY_DOWN_K21_24:
+ 252   2                      break;
+ 253   2              case KEY_LONG_K21_24:
+ 254   2                      g_tWork.match_code_mode = 1;
+ 255   2                      app_2d4_switch_public_address();
+ 256   2                      break;
+ 257   2              default:
+ 258   2                      break;
+ 259   2              }
+ 260   1              if (index) {
+ 261   2                      index++;
+ 262   2                      app_2d4_send(sendBuf, index);
+ 263   2              }
+ 264   1      
+ 265   1      }
+ 266          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    804    ----
+   CODE SIZE        =    813    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1       8
    PDATA SIZE       =   ----    ----

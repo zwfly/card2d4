@@ -39,7 +39,12 @@
 #define  KEY_NUM_3_CMD              0x60
 #define  KEY_NUM_4_CMD              0x61
 
-extern uint8_t sendBuf[PAYLOAD_WIDTH];
+#define WIRELESS_MATCH_CODE_CMD  0xFE
+
+extern idata uint8_t sendBuf[PAYLOAD_WIDTH];
+
+void app_2d4_switch_public_address(void);
+void app_2d4_switch_saved_address(void);
 
 void app_2d4_init(void);
 void app_2d4_send(uint8_t *d, uint8_t len);

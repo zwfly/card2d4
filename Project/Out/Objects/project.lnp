@@ -4,6 +4,7 @@
 ".\Out\Objects\app_crc.obj",
 ".\Out\Objects\app_eeprom.obj",
 ".\Out\Objects\app_key.obj",
+".\Out\Objects\app_work.obj",
 ".\Out\Objects\bsp.obj",
 ".\Out\Objects\bsp_timer0.obj",
 ".\Out\Objects\bsp_2d4.obj",

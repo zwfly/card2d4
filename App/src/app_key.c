@@ -215,11 +215,15 @@ void app_key_pro(uint8_t keyCode) {
 	case KEY_LONG_K20:
 		break;
 	case KEY_UP_K21:   // num 1
+		if (press_long_lock == 0) {
+			app_send_key(KEY_NUM_1_CMD, &index);
+		}
+		press_long_lock = 0;
 		break;
 	case KEY_DOWN_K21:
-		app_send_key(KEY_NUM_1_CMD, &index);
 		break;
 	case KEY_LONG_K21:
+		press_long_lock = 1;
 		break;
 	case KEY_UP_K22:   // num 2
 		app_send_key(KEY_NUM_2_CMD, &index);
@@ -241,6 +245,14 @@ void app_key_pro(uint8_t keyCode) {
 	case KEY_DOWN_K24:
 		break;
 	case KEY_LONG_K24:
+		break;
+	case KEY_UP_K21_24:   // num 1 and 4
+		break;
+	case KEY_DOWN_K21_24:
+		break;
+	case KEY_LONG_K21_24:
+		g_tWork.match_code_mode = 1;
+		app_2d4_switch_public_address();
 		break;
 	default:
 		break;

@@ -398,6 +398,11 @@
               <FileType>1</FileType>
               <FilePath>..\App\src\app_key.c</FilePath>
             </File>
+            <File>
+              <FileName>app_work.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\src\app_work.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -22,6 +22,7 @@
 #include "app_key.h"
 #include "app_eeprom.h"
 #include "Common.h"
+#include "app_work.h"
 
 #endif /* APP_INC_APP_H_ */
 
