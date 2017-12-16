@@ -131,6 +131,7 @@ static void app_2d4_Rcv(uint8_t *buf) {
 			app_eeprom_write_buf(0, address_sended_tmp, 5);
 		}
 		g_tWork.match_code_mode = 0;
+		Repeat_Stop();
 	}
 		break;
 	}

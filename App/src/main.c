@@ -155,8 +155,9 @@ void main(void) {
 			app_work_1s_pro();
 #if 1
 			PD_cnt++;
-			if (PD_cnt >= (g_tWork.match_code_mode ? 45 : 3)) {
+			if (PD_cnt >= (g_tWork.match_code_mode ? 30 : 3)) {
 				PD_cnt = 0;
+				Repeat_Stop();
 				into_powerDown();
 			}
 #endif

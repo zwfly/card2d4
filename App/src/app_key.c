@@ -42,13 +42,10 @@ static void app_send_key(uint8_t key, uint8_t *index) {
 void app_key_pro(uint8_t keyCode) {
 	uint8_t index = 0;
 	uint8_t i = 0;
-#if 0
-	Repeat_Stop();
 
-	Repeat_SetStart(bsp_led_on);
-	Repeat_SetStop(bsp_led_off);
-	Repeat_Start(5, 1, 1);
-#endif
+	if (g_tWork.match_code_mode) {
+		return;
+	}
 
 	index = 0;
 	memset(sendBuf, 0, PAYLOAD_WIDTH);
@@ -253,6 +250,12 @@ void app_key_pro(uint8_t keyCode) {
 	case KEY_LONG_K21_24:
 		g_tWork.match_code_mode = 1;
 		app_2d4_switch_public_address();
+		Repeat_Stop();
+		Repeat_SetStart(bsp_led_on);
+		Repeat_SetStop(bsp_led_off);
+		Repeat_Start(1, 4, 0);
+
+		index = 0;
 		break;
 	default:
 		break;
