@@ -45,6 +45,8 @@ void app_get_saved_address(uint8_t *addr) {
 	}
 }
 void app_2d4_switch_public_address(void) {
+	uint16_t i = 0;
+
 	memcpy(TX_ADDRESS_DEF, PUBLIC_ADDRESS_DEF, 5);
 
 	sendRcv_flag = 0;
@@ -52,6 +54,11 @@ void app_2d4_switch_public_address(void) {
 	memset(sendBuf, 0, sizeof(sendBuf));
 
 	RF_Init();
+
+	for (i = 0; i < 800; i++) {
+		nop
+	}
+
 	RF_RxMode();
 }
 void app_2d4_switch_saved_address(void) {

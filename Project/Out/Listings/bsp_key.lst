@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 1   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BSP_KEY
@@ -62,7 +62,7 @@ line level    source
   51   1        P15 = 1;
   52   1        P16 = 1;
   53   1        P17 = 1;
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 2   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 2   
 
   54   1      
   55   1        switch (line) {
@@ -126,7 +126,7 @@ line level    source
  113   2        case 3:
  114   2          P05 = 0;
  115   2          switch (column) {
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 3   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 3   
 
  116   3          case 0:
  117   3            ret = ~P17;
@@ -190,7 +190,7 @@ line level    source
  175          static uint8_t IsKeyDown1(void) {
  176   1        return IsKeyDown(0, 0);
  177   1      }
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 4   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 4   
 
  178          
  179          static uint8_t IsKeyDown2(void) {
@@ -254,7 +254,7 @@ line level    source
  237   1        return IsKeyDown(4, 1);
  238   1      }
  239          static uint8_t IsKeyDown19(void) {
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 5   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 5   
 
  240   1        return IsKeyDown(4, 2);
  241   1      }
@@ -318,7 +318,7 @@ line level    source
  299           *  返 回 值: 按键代码
  300           *********************************************************************************************************
  301           */
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 6   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 6   
 
  302          uint8_t bsp_GetKey(void) {
  303   1        uint8_t ret;
@@ -382,7 +382,7 @@ line level    source
  361           */
  362          void bsp_SetKeyParam(uint8_t _ucKeyID, uint16_t _LongTime, uint8_t _RepeatSpeed) {
  363   1        s_tBtn[_ucKeyID].LongTime = _LongTime; /* 长按时间 0 表示不检测长按键事件 */
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 7   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 7   
 
  364   1        s_tBtn[_ucKeyID].RepeatSpeed = _RepeatSpeed; /* 按键连发的速度，0表示不支持连发 */
  365   1        s_tBtn[_ucKeyID].RepeatCount = 0; /* 连发计数器 */
@@ -446,7 +446,7 @@ line level    source
  423           *  功能说明: 初始化按键变量
  424           *  形    参:  无
  425           *  返 回 值: 无
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 8   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 8   
 
  426           *********************************************************************************************************
  427           */
@@ -510,7 +510,7 @@ line level    source
  485   1        s_tBtn[i++].IsKeyDownFunc = IsKeyDown20;
  486   1        s_tBtn[i++].IsKeyDownFunc = IsKeyDown21;
  487   1        s_tBtn[i++].IsKeyDownFunc = IsKeyDown22;
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 9   
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 9   
 
  488   1        s_tBtn[i++].IsKeyDownFunc = IsKeyDown23;
  489   1        s_tBtn[i++].IsKeyDownFunc = IsKeyDown24;
@@ -574,7 +574,7 @@ line level    source
  547   3          }
  548   2          pBtn->LongCount = 0;
  549   2          pBtn->RepeatCount = 0;
-C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/16/2017 10:54:39 PAGE 10  
+C51 COMPILER V9.52.0.0   BSP_KEY                                                           12/20/2017 13:19:24 PAGE 10  
 
  550   2        }
  551   1      }
